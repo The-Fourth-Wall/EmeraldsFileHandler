@@ -1,22 +1,45 @@
 # ReadHandler
 
-TODO: Write a description here
+A safe file reader api.
 
 # Installation
 
-TODO: Write installation instructions here
+Install the library
+
+`em list`
+`em install`
+`em build lib`
 
 ## Usage
 
-TODO: Write usage instructions here
+```c
+int main(void) {
+    char *line1;
+    char *line2;
+    read_handler *h = read_handler_new();
+    
+    if(read_handler_open(h, "file.txt")) {
+        line1 = read_handler_read_line();
+        line2 = read_handler_read_line();
+    }
+
+    printf("%s\n", line1);
+    printf("%s\n", line2);
+
+    free(line1);
+    free(line2);
+
+    read_handler_close(h);
+}
+```
 
 ## Development
 
-TODO: Write development instructions here
+* Write tests
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/ReadHandler/fork>)
+1. Fork it (<https://github.com/Oblivious-Oblivious/ReadHandler/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -24,4 +47,4 @@ TODO: Write development instructions here
 
 ## Contributors
 
-- [YourName](https://github.com/your-github-user) - creator and maintainer
+- [Oblivious](https://github.com/Oblivious-Oblivious) - creator and maintainer
