@@ -13,10 +13,12 @@ Install the library
 ## Usage
 
 ```c
+#include "ReadHandler.h"
+
 int main(void) {
     char *line1;
     char *line2;
-    read_handler *h = read_handler_new();
+    struct read_handler *h = read_handler_new();
     
     if(read_handler_open(h, "file.txt")) {
         line1 = read_handler_read_line();
