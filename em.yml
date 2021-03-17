@@ -2,6 +2,7 @@ name: ReadHandler
 version: 0.1.0
 
 dependencies:
+  Bool: Oblivious-Oblivious/Bool
 
 dev-dependencies:
   cSpec: Oblivious-Oblivious/cSpec
