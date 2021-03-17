@@ -1,5 +1,5 @@
-#ifndef __READ_HANDLER_H_
-#define __READ_HANDLER_H_
+#ifndef __READ_HANDLER_BASE_H_
+#define __READ_HANDLER_BASE_H_
 
 #include <stdio.h>  /* FILE, fopen, fclose, printf */
 #include <stdlib.h> /* malloc, realloc, free */
