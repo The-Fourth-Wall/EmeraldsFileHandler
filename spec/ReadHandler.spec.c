@@ -1,13 +1,5 @@
 #include "ReadHandler.spec.h"
 
-module(T_ReadHandler, {
-    describe("#get_value", {
-        it("returns `Hello, World!`", {
-            assert_that_charptr("Hello, World!" equals to "Hello, World!");
-        });
-    });
-});
-
 spec_suite({
     T_ReadHandler();
 });

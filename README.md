@@ -37,8 +37,6 @@ int main(void) {
 
 ## Development
 
-* Write tests
-
 ## Contributing
 
 1. Fork it (<https://github.com/Oblivious-Oblivious/ReadHandler/fork>)
