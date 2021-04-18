@@ -37,6 +37,8 @@ int main(void) {
 
 ## Development
 
+* Add nullity checks
+
 ## Contributing
 
 1. Fork it (<https://github.com/EmeraldsFramework/ReadHandler/fork>)

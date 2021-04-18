@@ -77,9 +77,13 @@ char *read_handler_read_line(struct read_handler *self) {
 }
 
 bool read_handler_close(struct read_handler *self) {
+    if(self == NULL)
+        return false;
     if((fclose(self->fd))) {
         printf("Error on closing file: `%s`\n", self->filepath);
+        free(self);
         return false;
     }
+    free(self);
     return true;
 }
