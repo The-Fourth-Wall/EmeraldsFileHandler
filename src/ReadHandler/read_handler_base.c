@@ -35,45 +35,23 @@ bool read_handler_open(struct read_handler *self, char *filepath) {
     return true;
 }
 
+
+
 char *read_handler_read_line(struct read_handler *self) {
-    char *ret;
-    size_t line_len;
-    char buf[2];
-
-    size_t len = sizeof(buf);
-    char *line = (char*)malloc(len);
-    if(line == NULL) {
-        printf("Error on allocating memory for the buffer\n");
-        return "";
+    /* TODO -> ARBITRARY LINE LENGTH */
+    char *ret = (char*)malloc(sizeof(char) * 1024);
+    char *tmp = NULL;
+    ret[0] = '\0';
+    ret[1023] = '\0';
+    
+    if(fgets(ret, 1024, self->fd) == NULL) {
+        *ret = '\0';
+        return ret;
     }
-    line[0] = '\0';
-
-    while(fgets(buf, sizeof(buf), self->fd) != NULL) {
-        /* Resize when necessary */
-        if(len - strlen(line) < sizeof(buf)) {
-            len *= 2;
-            if((line = realloc(line, len)) == NULL) {
-                printf("Error on reallocating space for a bigger buffer\n");
-                free(line);
-                return "";
-            }
-        }
-
-        /* Append the buffer to the end of the line */
-        strcat(line, buf);
-
-        /* Reduce the buffer to the first line */
-        line_len = strlen(line);
-        if(line[line_len - 1] == '\n') {
-            ret = (char*)malloc(sizeof(char) * line_len);
-            strcpy(ret, line);
-            free(line);
-            ret[line_len - 1] = '\0';
-            return ret;
-        }
-    }
-
-    return line;
+    else if ((tmp = strrchr(ret, '\n')) != NULL)
+        *tmp = '\0';
+    
+    return ret;
 }
 
 bool read_handler_close(struct read_handler *self) {
