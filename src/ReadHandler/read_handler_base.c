@@ -39,7 +39,7 @@ bool read_handler_open(struct read_handler *self, char *filepath) {
 
 char *read_handler_read_line(struct read_handler *self) {
     /* TODO -> ARBITRARY LINE LENGTH */
-    char *ret = (char*)malloc(sizeof(char) * 1024);
+    char *ret = (char*)malloc(sizeof(char) * 4096);
     char *tmp = NULL;
     ret[0] = '\0';
     ret[1023] = '\0';
