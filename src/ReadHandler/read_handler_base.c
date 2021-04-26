@@ -45,7 +45,7 @@ char *read_handler_read_line(struct read_handler *self) {
     ret[0] = '\0';
     ret[linesize-1] = '\0';
     
-    if(fgets(ret, 1024, self->fd) == NULL) {
+    if(fgets(ret, linesize, self->fd) == NULL) {
         *ret = '\0';
         return ret;
     }
