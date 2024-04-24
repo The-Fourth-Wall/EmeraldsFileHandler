@@ -16,28 +16,28 @@ Install the library
 #include "ReadHandler.h"
 
 int main(void) {
-    char *line1;
-    char *line2;
-    struct read_handler *h = read_handler_new();
-    
-    if(read_handler_open(h, "file.txt")) {
-        line1 = read_handler_read_line();
-        line2 = read_handler_read_line();
-    }
+  char *line1;
+  char *line2;
+  struct read_handler *h = read_handler_new();
 
-    printf("%s\n", line1);
-    printf("%s\n", line2);
+  if(read_handler_open(h, "file.txt")) {
+    line1 = read_handler_read_line();
+    line2 = read_handler_read_line();
+  }
 
-    free(line1);
-    free(line2);
+  printf("%s\n", line1);
+  printf("%s\n", line2);
 
-    read_handler_close(h);
+  free(line1);
+  free(line2);
+
+  read_handler_close(h);
 }
 ```
 
 ## Development
 
-* Add nullity checks
+- Add nullity checks
 
 ## Contributing
 

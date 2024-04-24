@@ -1,9 +1,9 @@
 #include "ReadHandler.spec.h"
 
 spec_suite({
-    T_ReadHandler();
+  T_ReadHandler();
 });
 
-spec({
-    run_spec_suite("all");
-});
+int main(void) {
+  run_spec_suite("all");
+}

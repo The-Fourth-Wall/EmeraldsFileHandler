@@ -14,8 +14,8 @@
  * @param filepath -> The name of the file to read from
  */
 struct read_handler {
-    FILE *fd;
-    char *filepath;
+  FILE *fd;
+  const char *filepath;
 };
 
 /**
@@ -31,7 +31,7 @@ struct read_handler *read_handler_new(void);
  * @param filepath -> The path to open
  * @return a boolean signaling if the opening was successful
  */
-bool read_handler_open(struct read_handler *self, char *filepath);
+bool read_handler_open(struct read_handler *self, const char *filepath);
 
 /**
  * @func: read_handler_read_line
