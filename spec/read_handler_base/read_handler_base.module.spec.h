@@ -1,12 +1,12 @@
 #include "../../libs/cSpec/export/cSpec.h"
-#include "../../src/ReadHandler/headers/read_handler_base.h"
+#include "../../src/read_handler_base/read_handler_base.h"
 
 struct read_handler *T_read_handler_object;
 void setup_read_handler_object(void) {
   T_read_handler_object = read_handler_new();
 }
 
-module(T_ReadHandler, {
+module(T_read_handler, {
   before_each(&setup_read_handler_object);
 
   describe("#reader open", {
@@ -21,7 +21,9 @@ module(T_ReadHandler, {
 
     context("on reading an non existent file return false", {
       it("fails to read a file that is not yet created", {
-        bool actual = read_handler_open(T_read_handler_object, "this_filename_does_not_exist");
+        bool actual = read_handler_open(
+          T_read_handler_object, "this_filename_does_not_exist"
+        );
         assert_that(actual is false);
       });
     });

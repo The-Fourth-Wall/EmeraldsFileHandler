@@ -1,11 +1,11 @@
 #ifndef __READ_HANDLER_BASE_H_
 #define __READ_HANDLER_BASE_H_
 
+#include "../../libs/Bool/export/Bool.h"
+
 #include <stdio.h>  /* FILE, fopen, fclose, printf */
 #include <stdlib.h> /* malloc, realloc, free */
 #include <string.h> /* strcat, strlen, strcpy, strrchr */
-
-#include "../../../libs/Bool/export/Bool.h"
 
 /**
  * @struct read_handler

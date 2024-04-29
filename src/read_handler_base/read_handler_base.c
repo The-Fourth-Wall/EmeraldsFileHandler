@@ -1,4 +1,4 @@
-#include "headers/read_handler_base.h"
+#include "read_handler_base.h"
 
 /**
  * @func: read_handler_file_does_not_exist
@@ -8,7 +8,7 @@
 static bool read_handler_file_does_not_exist(struct read_handler *self) {
   /* Try to open for reading */
   FILE *f;
-  if ((f = fopen(self->filepath, "r"))) {
+  if((f = fopen(self->filepath, "r"))) {
     fclose(f);
     return false;
   }
@@ -17,19 +17,21 @@ static bool read_handler_file_does_not_exist(struct read_handler *self) {
 }
 
 struct read_handler *read_handler_new(void) {
-  struct read_handler *h = (struct read_handler *)malloc(sizeof(struct read_handler));
+  struct read_handler *h =
+    (struct read_handler *)malloc(sizeof(struct read_handler));
   h->filepath = NULL;
-  h->fd = NULL;
+  h->fd       = NULL;
   return h;
 }
 
 bool read_handler_open(struct read_handler *self, const char *filepath) {
   self->filepath = filepath;
 
-  if (read_handler_file_does_not_exist(self))
+  if(read_handler_file_does_not_exist(self)) {
     return false;
+  }
 
-  if (!(self->fd = fopen(self->filepath, "r"))) {
+  if(!(self->fd = fopen(self->filepath, "r"))) {
     printf("Error on reading file: `%s`\n", self->filepath);
     return false;
   }
@@ -38,25 +40,27 @@ bool read_handler_open(struct read_handler *self, const char *filepath) {
 
 char *read_handler_read_line(struct read_handler *self) {
   /* TODO -> ARBITRARY LINE LENGTH */
-  size_t linesize = 4096;
-  char *ret = (char *)malloc(sizeof(char) * linesize);
-  char *tmp = NULL;
-  ret[0] = '\0';
+  size_t linesize   = 4096;
+  char *ret         = (char *)malloc(sizeof(char) * linesize);
+  char *tmp         = NULL;
+  ret[0]            = '\0';
   ret[linesize - 1] = '\0';
 
-  if (fgets(ret, linesize, self->fd) == NULL) {
+  if(fgets(ret, linesize, self->fd) == NULL) {
     *ret = '\0';
     return ret;
-  } else if ((tmp = strrchr(ret, '\n')) != NULL)
+  } else if((tmp = strrchr(ret, '\n')) != NULL) {
     *tmp = '\0';
+  }
 
   return ret;
 }
 
 bool read_handler_close(struct read_handler *self) {
-  if (self == NULL)
+  if(self == NULL) {
     return false;
-  if ((fclose(self->fd))) {
+  }
+  if((fclose(self->fd))) {
     printf("Error on closing file: `%s`\n", self->filepath);
     free(self);
     return false;
