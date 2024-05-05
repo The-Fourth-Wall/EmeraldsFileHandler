@@ -1,4 +1,4 @@
-# ReadHandler
+# EmeraldsReadHandler
 
 A safe file reader api.
 
@@ -8,17 +8,17 @@ Install the library
 
 `em list`
 `em install`
-`em build lib`
+`em build lib release`
 
 ## Usage
 
 ```c
-#include "ReadHandler.h"
+#include "EmeraldsReadHandler.h"
 
 int main(void) {
   char *line1;
   char *line2;
-  struct read_handler *h = read_handler_new();
+  struct EmeraldsReadHandler *h = read_handler_new();
 
   if(read_handler_open(h, "file.txt")) {
     line1 = read_handler_read_line();
@@ -41,7 +41,7 @@ int main(void) {
 
 ## Contributing
 
-1. Fork it (<https://github.com/EmeraldsFramework/ReadHandler/fork>)
+1. Fork it (<https://github.com/Oblivious-Oblivious/EmeraldsReadHandler/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -49,4 +49,4 @@ int main(void) {
 
 ## Contributors
 
-- [Oblivious](https://github.com/Oblivious-Oblivious) - creator and maintainer
+- [oblivious](https://github.com/Oblivious-Oblivious) - creator and maintainer

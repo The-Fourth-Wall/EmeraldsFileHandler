@@ -1,7 +1,7 @@
 #include "../../libs/cSpec/export/cSpec.h"
 #include "../../src/read_handler_base/read_handler_base.h"
 
-struct read_handler *T_read_handler_object;
+EmeraldsReadHandler *T_read_handler_object;
 void setup_read_handler_object(void) {
   T_read_handler_object = read_handler_new();
 }

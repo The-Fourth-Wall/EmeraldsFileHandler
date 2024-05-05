@@ -1,11 +1,10 @@
 #include "read_handler_base.h"
 
 /**
- * @func: read_handler_file_does_not_exist
  * @brief Check if the path file exists in the filesystem
  * @return true if it does not exist
  */
-static bool read_handler_file_does_not_exist(struct read_handler *self) {
+static bool read_handler_file_does_not_exist(EmeraldsReadHandler *self) {
   /* Try to open for reading */
   FILE *f;
   if((f = fopen(self->filepath, "r"))) {
@@ -16,15 +15,15 @@ static bool read_handler_file_does_not_exist(struct read_handler *self) {
   return true;
 }
 
-struct read_handler *read_handler_new(void) {
-  struct read_handler *h =
-    (struct read_handler *)malloc(sizeof(struct read_handler));
+EmeraldsReadHandler *read_handler_new(void) {
+  EmeraldsReadHandler *h =
+    (EmeraldsReadHandler *)malloc(sizeof(EmeraldsReadHandler));
   h->filepath = NULL;
   h->fd       = NULL;
   return h;
 }
 
-bool read_handler_open(struct read_handler *self, const char *filepath) {
+bool read_handler_open(EmeraldsReadHandler *self, const char *filepath) {
   self->filepath = filepath;
 
   if(read_handler_file_does_not_exist(self)) {
@@ -38,7 +37,7 @@ bool read_handler_open(struct read_handler *self, const char *filepath) {
   return true;
 }
 
-char *read_handler_read_line(struct read_handler *self) {
+char *read_handler_read_line(EmeraldsReadHandler *self) {
   /* TODO -> ARBITRARY LINE LENGTH */
   size_t linesize   = 4096;
   char *ret         = (char *)malloc(sizeof(char) * linesize);
@@ -56,7 +55,7 @@ char *read_handler_read_line(struct read_handler *self) {
   return ret;
 }
 
-bool read_handler_close(struct read_handler *self) {
+bool read_handler_close(EmeraldsReadHandler *self) {
   if(self == NULL) {
     return false;
   }
