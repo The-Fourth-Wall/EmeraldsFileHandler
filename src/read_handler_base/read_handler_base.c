@@ -1,5 +1,7 @@
 #include "read_handler_base.h"
 
+#include "../../libs/EmeraldsString/export/EmeraldsString.h" /* IWYU pragma: keep */
+
 /**
  * @brief Check if the path file exists in the filesystem
  * @return true if it does not exist
@@ -37,22 +39,16 @@ bool read_handler_open(EmeraldsReadHandler *self, const char *filepath) {
   return true;
 }
 
-char *read_handler_read_line(EmeraldsReadHandler *self) {
-  /* TODO -> ARBITRARY LINE LENGTH */
-  size_t linesize   = 4096;
-  char *ret         = (char *)malloc(sizeof(char) * linesize);
-  char *tmp         = NULL;
-  ret[0]            = '\0';
-  ret[linesize - 1] = '\0';
+char *read_handler_load(EmeraldsReadHandler *self, const char *filepath) {
+  read_handler_open(self, filepath);
+  char *result = string_new("");
 
-  if(fgets(ret, linesize, self->fd) == NULL) {
-    *ret = '\0';
-    return ret;
-  } else if((tmp = strrchr(ret, '\n')) != NULL) {
-    *tmp = '\0';
+  char ch;
+  while((ch = fgetc(self->fd)) != EOF) {
+    string_add_char(result, ch);
   }
 
-  return ret;
+  return result;
 }
 
 bool read_handler_close(EmeraldsReadHandler *self) {

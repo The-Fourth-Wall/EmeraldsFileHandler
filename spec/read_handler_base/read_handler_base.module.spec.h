@@ -1,8 +1,8 @@
 #include "../../libs/cSpec/export/cSpec.h"
 #include "../../src/read_handler_base/read_handler_base.h"
 
-EmeraldsReadHandler *T_read_handler_object;
-void setup_read_handler_object(void) {
+static EmeraldsReadHandler *T_read_handler_object;
+static void setup_read_handler_object(void) {
   T_read_handler_object = read_handler_new();
 }
 
@@ -26,19 +26,6 @@ module(T_read_handler, {
         );
         assert_that(actual is false);
       });
-    });
-  });
-
-  describe("#read line", {
-    it("reads `123 234 345 456 567 678 789` from `test_file.txt`", {
-      FILE *fd = fopen("test_file.txt", "w");
-      fprintf(fd, "%s", "123 234 345 456 567 678 789\n");
-      fprintf(fd, "%s", "another line");
-      fclose(fd);
-
-      read_handler_open(T_read_handler_object, "test_file.txt");
-      char *actual = read_handler_read_line(T_read_handler_object);
-      assert_that_charptr(actual equals to "123 234 345 456 567 678 789");
     });
   });
 

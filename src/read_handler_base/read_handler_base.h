@@ -31,10 +31,12 @@ EmeraldsReadHandler *read_handler_new(void);
 bool read_handler_open(EmeraldsReadHandler *self, const char *filepath);
 
 /**
- * @brief Read a new line from the file descriptor
- * @return The line read
+ * @brief Loads each character into a vector
+ * @param self -> The file_loader to read from
+ * @param filepath -> The name of the file to read from
+ * @return string*
  */
-char *read_handler_read_line(EmeraldsReadHandler *self);
+char *read_handler_load(EmeraldsReadHandler *self, const char *filepath);
 
 /**
  * @brief Attempts to close the buffers to avoid memory overflows

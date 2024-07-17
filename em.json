@@ -4,7 +4,8 @@
   "version": "0.1.0",
 
   "dependencies": {
-    "EmeraldsBool": "The-Fourth-Wall/EmeraldsBool"
+    "EmeraldsBool": "The-Fourth-Wall/EmeraldsBool",
+    "EmeraldsString": "The-Fourth-Wall/EmeraldsString"
   },
 
   "dev-dependencies": {
@@ -17,23 +18,23 @@
     "cc": "clang",
     "debug": {
       "opt": "-Og -g",
-      "version": "-std=c89",
+      "version": "-std=c99",
       "flags": "-Wall -Wextra -Werror -pedantic -pedantic-errors -Wpedantic",
-      "warnings": "-Wno-int-conversion -Wno-incompatible-pointer-types",
+      "warnings": "-Wno-extra-semi -Wno-unused-function",
       "libs": ""
     },
     "release": {
       "opt": "-O2",
       "version": "-std=c2x",
       "flags": "",
-      "warnings": "-Wno-int-conversion",
+      "warnings": "-Wno-extra-semi -Wno-unused-function",
       "libs": ""
     },
     "test": {
       "opt": "-O2",
       "version": "-std=c2x",
       "flags": "",
-      "warnings": "-Wno-int-conversion -Wno-implicit-function-declaration -Wno-incompatible-pointer-types",
+      "warnings": "-Wno-extra-semi -Wno-unused-function",
       "libs": ""
     }
   },
