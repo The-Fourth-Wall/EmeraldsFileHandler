@@ -17,25 +17,22 @@
   "compile-flags": {
     "cc": "clang",
     "debug": {
-      "opt": "-Og -g",
+      "opt": "-Og",
       "version": "-std=c99",
-      "flags": "-Wall -Wextra -Werror -pedantic -pedantic-errors -Wpedantic",
-      "warnings": "-Wno-extra-semi -Wno-unused-function",
-      "libs": ""
+      "flags": "-g",
+      "warnings": "-Wall -Wextra -Werror -pedantic -pedantic-errors -Wpedantic -Wno-extra-semi -Wno-unused-function"
     },
     "release": {
       "opt": "-O2",
       "version": "-std=c2x",
       "flags": "",
-      "warnings": "-Wno-extra-semi -Wno-unused-function",
-      "libs": ""
+      "warnings": "-Wno-extra-semi -Wno-unused-function"
     },
     "test": {
       "opt": "-O2",
       "version": "-std=c2x",
-      "flags": "",
-      "warnings": "-Wno-extra-semi -Wno-unused-function",
-      "libs": ""
+      "flags": "-g",
+      "warnings": "-Wno-extra-semi -Wno-unused-function"
     }
   },
 

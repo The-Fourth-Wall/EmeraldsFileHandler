@@ -45,7 +45,7 @@ char *read_handler_load(EmeraldsReadHandler *self, const char *filepath) {
 
   char ch;
   while((ch = fgetc(self->fd)) != EOF) {
-    string_add_char(result, ch);
+    string_addf(result, "%c", ch);
   }
 
   return result;
