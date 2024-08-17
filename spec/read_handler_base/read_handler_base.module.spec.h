@@ -11,7 +11,7 @@ module(T_read_handler, {
 
   describe("#reader open", {
     context("on reading an existing file", {
-      FILE *fd = fopen("new_file.txt", "w");
+      fopen("new_file.txt", "w");
 
       it("reads file: `new_file.txt`", {
         bool actual = read_handler_open(T_read_handler_object, "new_file.txt");
@@ -42,4 +42,4 @@ module(T_read_handler, {
     remove("new_file.txt");
     remove("test_file.txt");
   });
-});
+})
