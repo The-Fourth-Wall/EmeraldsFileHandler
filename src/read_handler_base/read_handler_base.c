@@ -40,7 +40,10 @@ bool read_handler_open(EmeraldsReadHandler *self, const char *filepath) {
 }
 
 char *read_handler_load(EmeraldsReadHandler *self, const char *filepath) {
-  read_handler_open(self, filepath);
+  if(!read_handler_open(self, filepath)) {
+    return NULL;
+  }
+
   char *result = string_new("");
 
   char ch;
