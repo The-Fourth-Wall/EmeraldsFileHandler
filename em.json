@@ -19,20 +19,14 @@
     "debug": {
       "opt": "-Og",
       "version": "-std=c99",
-      "flags": "-g",
-      "warnings": "-Wall -Wextra -Werror -pedantic -pedantic-errors -Wpedantic -Wno-extra-semi -Wno-unused-function"
+      "flags": "-g -fsanitize=address",
+      "warnings": "-Wall -Wextra -Werror -pedantic -pedantic-errors -Wpedantic"
     },
     "release": {
       "opt": "-O2",
       "version": "-std=c2x",
       "flags": "",
-      "warnings": "-Wno-extra-semi -Wno-unused-function"
-    },
-    "test": {
-      "opt": "-O2",
-      "version": "-std=c2x",
-      "flags": "-g",
-      "warnings": "-Wno-extra-semi -Wno-unused-function"
+      "warnings": ""
     }
   },
 
