@@ -17,11 +17,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef __EMERALDSREADHANDLER_H_
-#define __EMERALDSREADHANDLER_H_
+#ifndef __EMERALDSFILEHANDLER_H_
+#define __EMERALDSFILEHANDLER_H_
 
-#include "read_handler_base/read_handler_base.h"
-
-#include <stdio.h>
+#include "file_handler/file_handler.h"
+#include "read_handler/read_handler.h"
+#include "write_handler/write_handler.h"
 
 #endif

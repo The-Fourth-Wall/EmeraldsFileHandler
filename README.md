@@ -1,6 +1,6 @@
-# EmeraldsReadHandler
+# EmeraldsFileHandler
 
-A safe file reader api.
+A safe file handler api.
 
 # Installation
 
@@ -13,12 +13,12 @@ Install the library
 ## Usage
 
 ```c
-#include "EmeraldsReadHandler.h"
+#include "EmeraldsFileHandler.h"
 
 int main(void) {
   char *line1;
   char *line2;
-  struct EmeraldsReadHandler *h = read_handler_new();
+  struct EmeraldsFileHandler *h = file_handler_new();
 
   if(read_handler_open(h, "file.txt")) {
     line1 = read_handler_read_line();
@@ -41,7 +41,7 @@ int main(void) {
 
 ## Contributing
 
-1. Fork it (<https://github.com/The-Fourth-Wall/EmeraldsReadHandler/fork>)
+1. Fork it (<https://github.com/The-Fourth-Wall/EmeraldsFileHandler/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
