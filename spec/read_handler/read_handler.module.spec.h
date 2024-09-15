@@ -3,7 +3,6 @@
 
 #include "../../libs/cSpec/export/cSpec.h"
 #include "../../src/read_handler/read_handler.h"
-#include "../../src/write_handler/write_handler.h"
 
 module(T_read_handler, {
   describe("#reader open", {

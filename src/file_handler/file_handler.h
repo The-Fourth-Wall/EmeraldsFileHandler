@@ -16,26 +16,76 @@ typedef struct EmeraldsFileHandler {
 } EmeraldsFileHandler;
 
 /**
- * @brief Creates a new instance of a EmeraldsFileHandler struct
- * @return EmeraldsFileHandler* -> The newly allocated EmeraldsFileHandler
+ * @brief Initializes a file_handler
+ * @param self -> The file_handler to initialize
  */
-EmeraldsFileHandler *file_handler_new(void);
+#define file_handler_init(self) \
+  do {                          \
+    (self)->filepath = NULL;    \
+    (self)->fd       = NULL;    \
+  } while(0)
 
 /**
  * @brief Open a file in read mode
- * @param filepath -> The path to open
+ * @param name -> The path to open
  * @param mode -> The mode to open the file in
  * @return a boolean signaling if the opening was successful
  */
-bool file_handler_open(
-  EmeraldsFileHandler *self, const char *filepath, const char *mode
-);
+#define file_handler_open(self, name, mode)      \
+  ((self)->filepath = (name),                    \
+   ((self)->fd = fopen((self)->filepath, mode)), \
+   (self)->fd == NULL ? false : true)
+
+/**
+ * @brief Write a string in the file
+ * @param filename -> The name of the file to write to
+ * @param str -> The string to write
+ */
+#define file_handler_write(filename, str)           \
+  do {                                              \
+    FILE *f;                                        \
+    char *mode;                                     \
+    EmeraldsFileHandler self = {0};                 \
+    if((f = fopen((filename), "r"))) {              \
+      mode = "a";                                   \
+      fclose(f);                                    \
+    } else {                                        \
+      mode = "w";                                   \
+    }                                               \
+    file_handler_init(&self);                       \
+    (void)file_handler_open(&self, filename, mode); \
+    fprintf(self.fd, "%s", (str));                  \
+    file_handler_close(&self);                      \
+  } while(0)
+
+/**
+ * @brief Writes a line in the file (with `\n`)
+ * @param filename -> The name of the file to write to
+ * @param line -> The line to write
+ */
+#define file_handler_write_line(filename, line) \
+  do {                                          \
+    file_handler_write(filename, line);         \
+    file_handler_write(filename, "\n");         \
+  } while(0)
 
 /**
  * @brief Attempts to close the buffers to avoid memory overflows
  * @param self -> The file_handler to close
  * @return a boolean signaling if closing was successful
  */
-bool file_handler_close(EmeraldsFileHandler *self);
+#define file_handler_close(self) \
+  do {                           \
+    if((self)) {                 \
+      fclose((self)->fd);        \
+    }                            \
+  } while(0)
+
+#define file_handler_deinit(self) \
+  do {                            \
+    file_handler_close(self);     \
+    (self)->fd       = NULL;      \
+    (self)->filepath = NULL;      \
+  } while(0)
 
 #endif
