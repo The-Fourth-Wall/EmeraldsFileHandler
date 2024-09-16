@@ -21,7 +21,6 @@
 #define __EMERALDSFILEHANDLER_H_
 
 #include "../libs/EmeraldsBool/export/EmeraldsBool.h"
-#include "../libs/EmeraldsPreprocessor/export/EmeraldsPreprocessor.h"
 #include "../libs/EmeraldsString/export/EmeraldsString.h"
 
 #include <stdio.h> /* FILE */
