@@ -1,8 +1,8 @@
 #ifndef __FILE_HANDLER_MODULE_SPEC_H_
 #define __FILE_HANDLER_MODULE_SPEC_H_
 
-#include "../../libs/cSpec/export/cSpec.h"
-#include "../../src/file_handler/file_handler.h"
+#include "../libs/cSpec/export/cSpec.h"
+#include "../src/EmeraldsFileHandler.h"
 
 static EmeraldsFileHandler loader = {0};
 static void setup_file_loader(void) { file_handler_init(&loader); }

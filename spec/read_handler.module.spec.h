@@ -1,8 +1,8 @@
 #ifndef __READ_HANDLER_MODULE_SPEC_H_
 #define __READ_HANDLER_MODULE_SPEC_H_
 
-#include "../../libs/cSpec/export/cSpec.h"
-#include "../../src/read_handler/read_handler.h"
+#include "../libs/cSpec/export/cSpec.h"
+#include "../src/EmeraldsFileHandler.h"
 
 module(T_read_handler, {
   describe("#reader open", {

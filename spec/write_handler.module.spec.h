@@ -1,5 +1,8 @@
-#include "../../libs/cSpec/export/cSpec.h"
-#include "../../src/read_handler/read_handler.h"
+#ifndef __WRITE_HANDLER_MODULE_SPEC_H_
+#define __WRITE_HANDLER_MODULE_SPEC_H_
+
+#include "../libs/cSpec/export/cSpec.h"
+#include "../src/EmeraldsFileHandler.h"
 
 module(T_write_handler, {
   describe("#write", {
@@ -23,3 +26,5 @@ module(T_write_handler, {
     remove("test_write_line.txt");
   });
 })
+
+#endif
