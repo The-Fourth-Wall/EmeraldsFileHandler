@@ -10,6 +10,7 @@ module(T_write_handler, {
       file_handler_write("test_write.txt", "test data");
       char *res = file_handler_read("test_write.txt");
       assert_that_charptr(res equals to "test data");
+      string_free(res);
     });
   });
 
@@ -18,6 +19,7 @@ module(T_write_handler, {
       file_handler_write_line("test_write_line.txt", "test data");
       char *res = file_handler_read("test_write_line.txt");
       assert_that_charptr(res equals to "test data\n");
+      string_free(res);
     });
   });
 

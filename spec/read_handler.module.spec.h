@@ -17,6 +17,7 @@ module(T_read_handler, {
       assert_that_int(text[2] equals to 'x');
       assert_that_int(text[3] equals to 't');
       assert_that_charptr(text equals to "text");
+      string_free(text);
     });
   });
 
