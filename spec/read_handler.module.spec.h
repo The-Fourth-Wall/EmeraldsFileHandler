@@ -5,6 +5,8 @@
 #include "../src/EmeraldsFileHandler.h"
 
 module(T_read_handler, {
+  before({ remove("test.marg"); });
+
   describe("#reader open", {
     it("loads text character by character", {
       file_handler_write("test.marg", "text");
